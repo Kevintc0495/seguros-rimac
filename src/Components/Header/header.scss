@@ -1,0 +1,103 @@
+.loggin__conta {
+  width: 100%;
+  height: 56px;
+  position: fixed;
+  // background-color: rgb(32, 218, 51);
+
+  .login__header {
+    width: 296px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 20px;
+
+    .login__logo {
+      width: 92px;
+      height: 16px;
+    }
+
+    .login__logo-phone {
+      width: 86.5px;
+      position: relative;
+
+      .question {
+        display: none;
+      }
+      
+      img {
+        width: 15.6px;
+        height: 19.2px;
+        margin-right: 8.8px;
+        display: inline-block;
+      }
+
+      .llamanos {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        color: #6769FF;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .number {
+        display: none;
+        font-family: 'Roboto', sans-serif;
+      }
+    }
+  }
+}
+
+@media (min-width: 1360px) {
+
+  .loggin__conta {
+
+    .login__header {
+      width: 1120px;
+      margin-left: 120px;
+
+      .login__logo {
+        width: 99px;
+        height: 16px;
+      }
+
+      .login__logo-phone {
+        width: 260px;
+        // background-color: red;
+
+        .question {
+          display: inline-block;
+          width: 131px;
+          text-align: right;
+          font-size: 12px;
+          position: absolute;
+          top: 0;
+          right: 129px;
+        }
+        
+        img {
+          width: 13px;
+          height: 16px;
+          margin-right: 0;
+          position: absolute;
+          top: 0;
+          right: 93px;
+        }
+        
+        .llamanos {
+          display: none;
+        }
+
+        .number {
+          width: 88px;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          color: #6769FF;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
