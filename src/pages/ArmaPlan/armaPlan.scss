@@ -35,6 +35,10 @@
         height: 14px;
       }
     }
+
+    .arma--plan__controlsDesktop {
+      display: none;
+    }
   }
 
   .arma--plan__cobertura {
@@ -44,7 +48,11 @@
       height: 340px;
       background-color: #F7F8FC;
 
-      h2 {
+      .arma--plan__user {
+        display: none;
+      }
+
+      .arma--plan__title--cobertura {
         width: 296px;
         font-weight: 400;
         padding-top: 40px;
@@ -85,12 +93,14 @@
           padding-left: 24px;
           line-height: 24px;
         }
-        
-        img {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        }
+          .arma--plan__people-m {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+          }
+          .arma--plan__people-d {
+            display: none;
+          }
       }
     }
 
@@ -98,20 +108,24 @@
       width: 296px;
       margin: auto;
       margin-top: 44px;
+
+      .arma--plan__cifras {
+        
+        h4 {
+          font-size: 16px;
+          font-weight: 400;
+        }
+  
+        span {
+          display: inline-block;
+          font-size: 12px;
+        }
+  
+        .max {
+          padding-left: 25px;
+        }
+      }
       
-      h4 {
-        font-size: 16px;
-        font-weight: 400;
-      }
-
-      span {
-        display: inline-block;
-        font-size: 12px;
-      }
-
-      .max {
-        padding-left: 25px;
-      }
 
       .arma--plan__box {
         width: 296px;
@@ -134,17 +148,19 @@
     }
 
     .arma--plan__coberturas {
-      width: 286px;
+      width: 360px;
+      // height: 833px;
+      margin: auto;
       margin-top: 36px;
-
+      
       h2 {
+        width: 286px;
         font-size: 20px;
         font-weight: 400;
         padding-left: 32px;
       }
 
       .arma--plan__planes {
-        width: 360px;
         margin-top: 16px;
 
         div {
@@ -172,6 +188,436 @@
             }
           }
         }
+      }
+
+      .arma--plan__active {
+        margin-top: 32px;
+
+        .arma--plan__plan {
+          width: 296px;
+          margin: auto {
+            top: 16px;
+          };
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #E4E8F7;
+          background-color: violet;
+
+          .arma--plan__icon {
+            width: 40px;
+            display: inline-block;
+            // background-color: rgb(88, 88, 242);
+          }
+
+          .arma--plan__information {
+            width: 240px;
+            display: inline-block;
+            // background-color: red;
+
+            h5 {
+              width: 157px;
+              font-size: 16px;
+              font-weight: 400;
+            }
+
+            .arma--plan__icono {
+              display: none;
+            }
+
+            p {
+              margin-top: 16px;
+              font-size: 14px;
+              line-height: 24px;
+            }
+
+            .arma--plan__ver {
+              width: 82px;
+              height: 16px;
+              // background-color: #6F7DFF;
+
+              span {
+                margin: {
+                  right: 11px;
+                };
+                display: inline-block;
+                font-size: 10px;
+                font-weight: 700;
+              }
+
+              img {
+                display: inline-block;
+              }
+
+              .hidden {
+                display: none;
+              }
+
+            }
+            .hidden {
+              display: none;
+            }
+
+            .ver-menos {
+              color: #A3ABCC;
+              margin: {
+                top: 16px;
+                bottom: 32px;
+              };
+            }
+
+            .ver-mas {
+              color: #6F7DFF;
+              margin: {
+                top: 12px;
+                bottom: 24px;
+              };
+            }
+          }
+
+          .openInfo {
+            height: 320px;
+          }
+
+          .closeInfo {
+            height: 124px;
+          }
+        }
+      }
+    }
+  }
+
+  .arma--plan__cotizacion {
+    width: 360px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    // background-color: blanchedalmond;
+
+    .arma--plan__monto {
+      width: 104px;
+      height: 48px;
+      position: relative;
+      margin-left: 32px;
+
+      .monto {
+        display: none;
+      }
+  
+      .costo {
+        font-size: 24px;
+      }
+      
+      .mensual {
+        height: 16px;
+        font-size: 10px;
+      }
+    }
+
+    .arma--plan__incluye {
+      display: none;
+    }
+
+    .arma--plan__button {
+      width: 168px;
+      height: 44px;
+      margin-left: 24px;
+      background-color: #EF3340;
+      border-radius: 6px;
+      border: 0;
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+@media (min-width: 1360px) {
+
+  .arma--plan__container {
+    width: 1360px;
+    display: flex;
+    flex-direction: row;
+
+    .arma--plan__progress {
+      width: 408px;
+      min-height: 1353px;
+      background-color: #F7F8FC;
+
+      .arma--plan__controls {
+        display: none;
+      }
+
+      .arma--plan__controlsDesktop {
+        display: block;
+        width: 224px;
+        margin: auto {
+          top: 52px;
+        };
+
+        .arma--plan__one {
+          display: flex;
+          margin-bottom: 44px;
+
+          span {
+            display: inline-block;
+            margin-left: 16px;
+            font-size: 16px;
+          }
+        }
+      }
+
+    }
+
+    .arma--plan__cobertura {
+      width: 576px;
+
+      .arma--plan__vehiculo {
+        height: 318px;
+        background-color: white;
+
+        .arma--plan__user {
+          display: block;
+          width: 384px;
+          font-size: 40px;
+          margin: auto {
+            top: 48px;
+          };
+
+          .arma--plan__back {
+            display: flex;
+            align-items: center;
+
+            img {
+              display: inline-block;
+              margin-right: 16px;
+            }
+
+            span {
+              display: inline-block;
+              font-size: 12px;
+            }
+          }
+
+          p {
+            display: inline-block;
+            width: max-content;
+            font-size: 40px;
+          }
+
+          h2 {
+            font-weight: 400;
+            display: inline-block;
+            font-size: 40px;
+            color: #EF3340;
+          }
+        }
+        .arma--plan__title--cobertura {
+          display: none;
+        }
+
+        p {
+          width: 384px;
+          margin: auto {
+            bottom: 24px;
+          };
+        }
+
+        .arma--plan__datos {
+          width: 384px;
+          height: 172px;
+          border: 3px solid #F0F2FA;
+
+          h4 {
+            padding: 40px 0 0 32px;
+          }
+  
+          h3 {
+            font-size: 20px;
+            padding-left: 32px;
+          }
+          
+          .arma--plan__people-m {
+            display: none;
+          }
+
+          .arma--plan__people-d {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+          }
+        }
+      }
+
+      .arma--plan__costo {
+        position: relative;
+        width: 384px;
+        height: 56px;
+        margin-top: 55px;
+
+        .arma--plan__cifras {
+          width: 179px;
+          position: absolute;
+          left: 0;
+          top: calc(28px - 21.7px);
+        }
+
+        .arma--plan__box {
+          width: 160px;
+          height: 56px;
+          position: absolute;
+          right: 0;
+          top: -16px;
+
+          input {
+            width: 60px;
+            height: 24px;
+            text-align: center;
+          }
+        }
+      }
+
+      .arma--plan__coberturas {
+        width: 384px;
+        background-color: #EF3340;
+        margin-top: 43px;
+        border-top: 1px solid;
+
+        h2 {
+          margin-top: 55px;
+          width: 384px;
+          padding-left: 0;
+        }
+
+        .arma--plan__planes {
+          margin-top: 8px;
+
+          div {
+            width: 128px;
+          }
+        }
+
+        .arma--plan__active {
+          margin-top: 32px;
+          // background-color: yellow;
+  
+          .arma--plan__plan {
+            width: 296px;
+            min-height: 94.6px;
+            margin: auto {
+              top: 16px;
+            };
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #E4E8F7;
+            background-color: rgb(130, 238, 130);
+            position: relative;
+  
+            .arma--plan__icon {
+              width: 40px;
+              // height: 320px;
+              display: inline-block;
+              // background-color: rgb(88, 88, 242);
+            }
+  
+            .arma--plan__information {
+              width: 240px;
+              display: inline-block;
+              // background-color: red;
+              .arma--plan__icono {
+                display: block;
+                margin-top: 12px;
+
+                .hidden {
+                  display: none;
+                }
+              }
+
+              p {
+                margin-bottom: 32px;
+              }
+
+              .arma--plan__ver {
+                margin: 0;
+                position: absolute;
+                top: -2px;
+                right: 0;
+                width: max-content;
+
+                span {
+                  display: none;
+                }
+              }
+            }
+  
+            .openInfo {
+              height: 320px;
+            }
+  
+            .closeInfo {
+              height: 124px;
+            }
+          }
+        }
+      }
+    }
+
+    .arma--plan__cotizacion {
+      width: 224px;
+      height: 333px;
+      flex-direction: column;
+      margin-top: 189px;
+      
+      .arma--plan__monto {
+        width: 224px;
+        height: 102px;
+        border-bottom: 1px solid #E4E8F7;
+        margin-left: 0;
+
+        .monto {
+          display: block;
+          font-size: 12px;
+          margin-bottom: 10px;
+        }
+
+        .costo {
+          font-size: 28px;
+          margin-bottom: 4px;
+        }
+        
+        .mensual {
+          font-size: 12px;
+        }
+      }
+
+      .arma--plan__incluye {
+        display: block;
+        width: 224px;
+        margin-top: 24px;
+
+        h3 {
+          font-size: 16px;
+          margin-bottom: 12px;
+        }
+
+        .arma--plan__check {
+          width: 220.25px;
+          margin-bottom: 8px;
+          
+          img {
+            margin-right: 19.42px;
+          }
+        }
+      }
+  
+      .arma--plan__button {
+        width: 224px;
+        height: 48px;
+
+        margin: {
+          top: 32px;
+          left: 0;
+        }
+        background-color: #EF3340;
       }
     }
   }

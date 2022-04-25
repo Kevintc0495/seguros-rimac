@@ -1,26 +1,45 @@
-import React, { memo, useState } from 'react'
-import { Link, useParams, useHistory, useNavigate } from "react-router-dom";
+import React, { memo, useEffect, useState, useContext } from 'react'
+import { useNavigate } from "react-router-dom";
 import './login.scss'
 import people from '../../assets/img/people-mobile.svg'
 import peopleDesktop from '../../assets/img/people-desktop.svg'
 import Header from '../../Components/Header/Header';
+import AuthContext from '../../context/AuthContext';
 
 const Login = () => {
+  const { dni, setAuth , setDni} = useContext(AuthContext);
   const [ form, setForm ] = useState({});
   const navigate = useNavigate();
 
   const handleInputChange = ({ target }) => {
     const { name, value } = target
+    setDni(name === "documento" ? value : dni)
     setForm({
       ...form,
       [name]: value
     })
+
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/arma-plan/${form.placa}`);
   }
+
+  const consumirAPI = async () => {
+    try {
+      const user = await fetch('https://jsonplaceholder.typicode.com/users');
+      const data = await user.json();
+      setAuth(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    consumirAPI();
+  }, [])
+  
 
   return (
     <>
