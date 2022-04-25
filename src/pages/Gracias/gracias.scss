@@ -1,0 +1,151 @@
+.div-spacio {
+  height: 56px;
+}
+
+.gracias__container {
+  width: 360px;
+  margin: auto;
+
+  .gracias__wallpaper {
+    height: 208px;
+
+    .gracias__image-mobile {
+      width: 100%;
+      height: 100%;
+    }
+
+    .gracias__image-desktop {
+      display: none;
+    }
+  }
+
+  .gracias__information {
+    width: 360px;
+    margin-top: 48px;
+
+    .gracias__wellcome {
+      width: 296px;
+      margin: auto;
+
+      h2 {
+        color: #EF3340;
+        font-size: 27px;
+        font-weight: 400;
+        line-height: 36px;
+      }
+
+      h3 {
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 36px;
+      }
+
+      p {
+        margin-top: 24px;
+        font-size: 16px;
+        font-weight: 300;
+        color: #676F8F;
+      }
+
+      span {
+        display: inline-block;
+        font-weight: 400;
+      }
+    }
+
+    .gracias__button {
+      width: 296px;
+      margin: auto{
+        top: 40px;
+        bottom: 56px;
+      }
+
+      button {
+        width: 100%;
+        height: 56px;
+        background: #EF3340;
+        border-radius: 8px;
+        color: #FFFFFF;
+        border: 0;
+      }
+    }
+  }
+}
+
+footer {
+  width: 360px;
+  height: 75px;
+  margin: auto;
+  text-align: center;
+  border-top: 1px solid #E4E8F7;
+
+  span {
+    display: inline-block;
+    padding-top: calc(37.5px - 8px);
+    color: #A3ABCC;
+    font-size: 12px;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 1360px) {
+
+  .gracias__container {
+    width: 1360px;
+    display: flex;
+  
+    .gracias__wallpaper {
+      width: 408px;
+      min-height: calc(100vh - 56px);
+      position: relative;
+      background-color: #F7F8FC;
+  
+      .gracias__image-mobile {
+        display: none;
+      }
+
+      .gracias__image-desktop {
+        display: inline-block;
+        position: absolute;
+        top: 96px;
+        left: 88px;
+      }
+    }
+  
+    .gracias__information {
+      width: 952px;
+      margin-top: 48px;
+  
+      .gracias__wellcome {
+        width: 480px;
+        
+        h2 {
+          font-size: 36px;
+          line-height: 48px;
+        }
+  
+        h3 {
+          font-size: 36px;
+          line-height: 48px;
+        }
+  
+        p {
+          margin-top: 16px;
+        }
+      }
+  
+      .gracias__button {
+        width: 952px;
+
+        button {
+          width: 255px;
+          margin-left: 235px;
+        }
+      }
+    }
+  }
+
+  footer {
+      display: none;
+  }
+}

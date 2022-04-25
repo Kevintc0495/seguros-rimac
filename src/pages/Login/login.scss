@@ -6,6 +6,7 @@
 
 .login-container {
   width: 360px;
+  margin: auto;
   padding-top: 56px;
 
   .login__wallpaper {
@@ -72,6 +73,7 @@
     width: 296px;
     margin: auto {
       top: 40px;
+      bottom: 54px;
     }
 
     h2 {
@@ -115,11 +117,16 @@
 
     .login__terminos {
       margin-top: 24px;
+      display: flex;
 
       input {
         width: 20px;
         height: 20px;
         margin-right: 10px;
+
+        &:checked {
+          background-color: #7CC954;
+        }
       }
 
       label {
@@ -157,13 +164,13 @@
 
     .login__wallpaper {
       width: 536px;
-      height: 709px;
-      min-height: 100vh;
+      // height: 709px;
+      // min-height: calc(100vh - 56px);
 
       .login__information {
         position: relative;
         margin-top: 56px;
-        height: 605.8px;
+        height: 600.8px;
         flex-direction: row;
         // background-color: antiquewhite;
 
@@ -224,10 +231,9 @@
 
     .login__form {
       margin-top: 0;
-      min-height: 100vh;
 
       form {
-        margin-top: calc(50vh - 213.6px);
+        margin-top: calc(50vh - 269.6px);
   
         h2 {
           font-size: 28px;

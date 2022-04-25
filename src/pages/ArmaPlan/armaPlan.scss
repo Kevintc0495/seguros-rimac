@@ -10,6 +10,7 @@
 
 .arma--plan__container {
   width: 360px;
+  margin: auto;
   border-top: 1px solid #E4E8F7;
 
   .arma--plan__progress {
@@ -165,7 +166,7 @@
 
         div {
           display: inline-block;  
-          background-color: #A3ABCC;
+          // background-color: #A3ABCC;
           width: 120px;
           height: 80px;
           text-align: center;
@@ -188,6 +189,14 @@
             }
           }
         }
+
+        .selection {
+          border-bottom: 2px solid #EF3340;
+
+          p {
+            color: #EF3340;
+          }
+        }
       }
 
       .arma--plan__active {
@@ -201,7 +210,6 @@
           display: flex;
           justify-content: space-between;
           border-bottom: 1px solid #E4E8F7;
-          background-color: violet;
 
           .arma--plan__icon {
             width: 40px;
@@ -212,6 +220,7 @@
           .arma--plan__information {
             width: 240px;
             display: inline-block;
+            position: relative;
             // background-color: red;
 
             h5 {
@@ -222,6 +231,72 @@
 
             .arma--plan__icono {
               display: none;
+            }
+
+            .arma--plan__toggle {
+              position: absolute;
+              right: 0;
+              top: 0;
+
+              .switch {
+                position: relative;
+                display: inline-block;
+                width: 51px;
+                height: 31px;
+              }
+              
+              .switch input { 
+                opacity: 0;
+                width: 0;
+                height: 0;
+              }
+              
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+              
+              .slider:before {
+                position: absolute;
+                content: "";
+                height: 23px;
+                width: 23px;
+                left: 1.5px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+              
+              input:checked + .slider {
+                background-color: #7CC954;
+              }
+              
+              input:focus + .slider {
+                box-shadow: 0 0 1px #7CC954;
+              }
+              
+              input:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+              }
+              
+              /* Rounded sliders */
+              .slider.round {
+                border-radius: 30px;
+              }
+              
+              .slider.round:before {
+                border-radius: 50%;
+              }
             }
 
             p {
@@ -478,9 +553,8 @@
 
       .arma--plan__coberturas {
         width: 384px;
-        background-color: #EF3340;
         margin-top: 43px;
-        border-top: 1px solid;
+        border-top: 1px solid #E4E8F7;
 
         h2 {
           margin-top: 55px;
@@ -509,7 +583,6 @@
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #E4E8F7;
-            background-color: rgb(130, 238, 130);
             position: relative;
   
             .arma--plan__icon {
@@ -522,7 +595,8 @@
             .arma--plan__information {
               width: 240px;
               display: inline-block;
-              // background-color: red;
+              position: static;
+
               .arma--plan__icono {
                 display: block;
                 margin-top: 12px;
@@ -532,6 +606,10 @@
                 }
               }
 
+              .arma--plan__toggle {
+                display: none;
+              }
+              
               p {
                 margin-bottom: 32px;
               }
@@ -547,14 +625,6 @@
                   display: none;
                 }
               }
-            }
-  
-            .openInfo {
-              height: 320px;
-            }
-  
-            .closeInfo {
-              height: 124px;
             }
           }
         }

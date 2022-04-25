@@ -24,10 +24,10 @@ import Header from '../../Components/Header/Header';
 import AuthContext from '../../context/AuthContext';
 
 const ArmaPlan = () => {
-  const selectRef = useRef();
-  const { people } = useContext(AuthContext);
+  const { people, setPago } = useContext(AuthContext);
   const { placa } = useParams();
   const navigate = useNavigate();
+  const [user, setUser] = useState('');
   const [monto, setMonto] = useState(0);
   const [pagoMensual, setPagoMensual] = useState(20);
   const [min, setMin] = useState(0);
@@ -56,16 +56,39 @@ const ArmaPlan = () => {
   }
 
   const cobertura = ({target}) => {
-    if (target.className === "") {
-     console.log("sin clase");
-     target.classList.add("hidden");
-     target.nextSibling.classList.remove("hidden");
+    let cobertura = '';
+    let addRest = false;
+    let valor = 0;
+    if (target.name != "switchCobertura") {
+      cobertura = target.parentElement.previousSibling.innerText;
+      if (target.className === "") {
+       target.classList.add("hidden");
+       target.nextSibling.classList.remove("hidden");
+       addRest = true;
+      }
+  
+      if (target.className === "quitar") {
+        target.classList.add("hidden");
+        target.previousSibling.classList.remove("hidden");
+      }
+    } else {
+      cobertura = target.parentElement.parentElement.nextSibling.innerText;
+      addRest = target.checked ? true : false;
     }
 
-    if (target.className === "add") {
-      target.classList.add("hidden");
-      target.previousSibling.classList.remove("hidden");
+    switch (cobertura) {
+      case 'Llanta robada':
+        valor = 15;
+        break;
+      case 'Choque y/o pasarte la luz roja':
+        valor = 20;
+        break;
+      case 'Atropello en la vía Evitamiento':
+        valor = 50;
+        break;
     }
+
+    setPagoMensual( addRest ? pagoMensual + valor : pagoMensual - valor);
   }
 
   const openText = ({target}) => {
@@ -87,10 +110,23 @@ const ArmaPlan = () => {
     }
   }
 
+  const loQuiero = () => {
+    navigate(`/gracias`);
+  }
+
   useEffect(() => {
     setMin(monto * 0.87413)
     setMax(monto * 1.15385)
   }, [monto])
+  
+  useEffect(() => {
+    setPago(pagoMensual);
+  }, [pagoMensual])
+
+  useEffect(() => {
+    let index = people?.name?.indexOf(" ", 0);
+    setUser(people?.name?.slice(0, index));
+  }, [])
 
   return (
     <>
@@ -100,7 +136,7 @@ const ArmaPlan = () => {
       <section className='arma--plan__container'>
         <section className='arma--plan__progress'>
           <article className='arma--plan__controls'>
-            <img src={iconBack} alt="icon back" />
+            <img src={iconBack} alt="icon back" onClick={backUrl}/>
             <span>PASO 2 DE 2</span>
             <progress max="100" value="100"></progress>
           </article>
@@ -123,7 +159,7 @@ const ArmaPlan = () => {
                 <span>VOLVER</span>
               </div>
               <p>¡Hola,</p>
-              <h2>{people?.name || ""}</h2>
+              <h2>{user || ""}</h2>
             </div>
             <h2 className='arma--plan__title--cobertura'>Mira las coberturas</h2>
             <p>Conoce las coberturas para tu plan</p>
@@ -151,7 +187,7 @@ const ArmaPlan = () => {
           <article className='arma--plan__coberturas'>
             <h2>Agrega o quita coberturas</h2>
             <article className='arma--plan__planes'>
-              <div>
+              <div className='selection'>
                 <p>PROTEGE A TU AUTO</p>
               </div>
               <div>
@@ -167,10 +203,16 @@ const ArmaPlan = () => {
                   <img src={iconLLanta} alt="icono de llanta" />
                 </div>
                 <div className='arma--plan__information'>
+                  <div className='arma--plan__toggle'>
+                    <label className="switch">
+                      <input type="checkbox" name='switchCobertura' onChange={cobertura}/>
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
                   <h5>Llanta robada</h5>
                   <div className='arma--plan__icono'>
-                    <img src={quitar} alt="Quitar" onClick={cobertura} className=''/>
-                    <img src={agregar} alt="Agregar" onClick={cobertura} className='add hidden'/>
+                    <img src={agregar} alt="Agregar" onClick={cobertura} className=''/>
+                    <img src={quitar} alt="Quitar" onClick={cobertura} className='quitar hidden'/>
                   </div>
                   <p className='hidden'>He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis</p>
                   <div className='arma--plan__ver ver-mas'>
@@ -186,10 +228,16 @@ const ArmaPlan = () => {
                   <img src={icon_damage} alt="icono choque" />
                 </div>
                 <div className='arma--plan__information'>
+                  <div className='arma--plan__toggle'>
+                    <label className="switch">
+                      <input type="checkbox" name='switchCobertura' onChange={cobertura}/>
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
                   <h5> Choque y/o pasarte la luz roja </h5>
                   <div className='arma--plan__icono'>
-                    <img src={quitar} alt="Quitar" onClick={cobertura} className=''/>
-                    <img src={agregar} alt="Agregar" onClick={cobertura} className='add hidden'/>
+                    <img src={agregar} alt="Agregar" onClick={cobertura} className=''/>
+                    <img src={quitar} alt="Quitar" onClick={cobertura} className='quitar hidden'/>
                   </div>
                   <p className='hidden'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus auctor blandit. Aenean congue volutpat faucibus. Nullam mattis eros a metus luctus imperdiet. In justo dolor, lobortis sed nisl ut, tempor interdum metus. Aliquam eget pellentesque dolor, eu efficitur nisl. Sed rhoncus cursus eros, et vulputate sapien ullamcorper eget. In tellus quam, hendrerit in mi et, suscipit lacinia nisi. Nullam condimentum quis tellus vel consectetur.</p>
                   <div className='arma--plan__ver ver-mas'>
@@ -204,10 +252,16 @@ const ArmaPlan = () => {
                   <img src={icon_perdidatotal} alt="icono atropello" />
                 </div>
                 <div className='arma--plan__information '>
-                  <h5>Atropello en la vía Evitamiento </h5>
+                  <div className='arma--plan__toggle'>
+                    <label className="switch">
+                      <input type="checkbox" name='switchCobertura' onChange={cobertura}/>
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                  <h5>Atropello en la vía Evitamiento</h5>
                   <div className='arma--plan__icono'>
-                    <img src={quitar} alt="Quitar" onClick={cobertura} className=''/>
-                    <img src={agregar} alt="Agregar" onClick={cobertura} className='add hidden'/>
+                    <img src={agregar} alt="Agregar" onClick={cobertura} className=''/>
+                    <img src={quitar} alt="Quitar" onClick={cobertura} className='quitar hidden'/>
                   </div>
                   <p className='hidden'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus auctor blandit. Aenean congue volutpat faucibus. Nullam mattis eros a metus luctus imperdiet. In justo dolor, lobortis sed nisl ut, tempor interdum metus. Aliquam eget pellentesque dolor, eu efficitur nisl. Sed rhoncus cursus eros, et vulputate sapien ullamcorper eget. In tellus quam, hendrerit in mi et, suscipit lacinia nisi. Nullam condimentum quis tellus vel consectetur.</p>
                   <div className='arma--plan__ver ver-mas'>
@@ -241,7 +295,7 @@ const ArmaPlan = () => {
               <span>Aros gratis</span>
             </div>
           </article>
-          <button className='arma--plan__button'>LO QUIERO</button>
+          <button className='arma--plan__button' onClick={loQuiero}>LO QUIERO</button>
         </section>
       </section>
     </>

@@ -12,12 +12,21 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleInputChange = ({ target }) => {
-    const { name, value } = target
-    setDni(name === "documento" ? value : dni)
+    const { name, value } = target;
+
+    if (name === 'documento') {
+      if (value.length > 8) {
+         setForm({...form, documento: value.slice(0,8)});
+         return alert("El campo DNI no debe contener mas de 8 digitos")
+      }
+    }
+
     setForm({
       ...form,
       [name]: value
     })
+
+    setDni(name === "documento" ? value : dni);
 
   }
   
@@ -39,7 +48,6 @@ const Login = () => {
   useEffect(() => {
     consumirAPI();
   }, [])
-  
 
   return (
     <>
@@ -69,7 +77,7 @@ const Login = () => {
               <select name="select" className='tipe--document' onChange={handleInputChange} >
                 <option value="value1" defaultValue >DNI</option>
               </select>
-              <input className='n--document' type="text" name="documento" placeholder='Nro. de doc' onChange={handleInputChange} required />
+              <input className='n--document' type="text" name="documento" value={form?.documento || ""} placeholder='Nro. de doc' onChange={handleInputChange} required />
             </div>
             <div className='login__box'>
               <input className='login__input' type="text" name="celular" placeholder='Celular' onChange={handleInputChange} required />
