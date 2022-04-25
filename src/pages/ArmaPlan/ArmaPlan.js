@@ -32,6 +32,7 @@ const ArmaPlan = () => {
   const [pagoMensual, setPagoMensual] = useState(20);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
+  const [validator, setValidator] = useState(0);
 
   const backUrl = () => {
     navigate(`/`);
@@ -82,6 +83,7 @@ const ArmaPlan = () => {
         break;
       case 'Choque y/o pasarte la luz roja':
         valor = 20;
+        setValidator(addRest ? true : false);
         break;
       case 'Atropello en la vía Evitamiento':
         valor = 50;
@@ -117,6 +119,7 @@ const ArmaPlan = () => {
   useEffect(() => {
     setMin(monto * 0.87413)
     setMax(monto * 1.15385)
+    setPagoMensual(monto > 16000 && validator ? pagoMensual - 20 : pagoMensual)
   }, [monto])
   
   useEffect(() => {
